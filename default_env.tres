@@ -1,0 +1,11 @@
+[gd_resource type="Environment" load_steps=3 format=2]
+
+[sub_resource type="StreamTexture" id=2]
+load_path = "res://.import/bg.png-c437bba7722705cd75f308560029cc1e.stex"
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = SubResource( 2 )
+
+[resource]
+background_mode = 2
+background_sky = SubResource( 1 )
