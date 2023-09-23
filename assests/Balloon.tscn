@@ -49,7 +49,7 @@ script = ExtResource("1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("4")
-animation = &"Burst"
+animation = &"Floating"
 autoplay = "Floating"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
