@@ -35,11 +35,11 @@ func balloon_hit() -> void:
 
 
 func arrow_fired()-> void:
+	num_arrows -= 1
 	if num_arrows == 0:
 		$LoseTimer.start()
 		emit_signal("arrows_left", false)
 	$HUD/ScoreBoard/ArrowsLabel.text = str(num_arrows)
-	num_arrows -= 1
 
 
 func _on_LoseTimer_timeout() -> void:

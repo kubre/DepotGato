@@ -1,16 +1,18 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1695443654
-default_env.tres::Environment::588828992922976997::1695443648::0::1::::<><>::
+::res://::1695444417
+default_env.tres::Environment::588828992922976997::1695443832::0::1::::<><>::
 icon.png::CompressedTexture2D::2937784862692532716::1602654120::1686376080::1::::<><>::
 Menu.tscn::PackedScene::-1::1686376057::0::1::::<><>::
 README.md::TextFile::-1::1602654120::0::1::::<><>::
-World.tscn::PackedScene::7496924053883458073::1695443648::0::1::::<><>::res://scripts/World.gd<>uid://drljo7aaraf42::::res://sprites/bg.png<>res://scripts/Bow.gd<>uid://b028plvn8m7wk::::res://sprites/bow and arrow.png<>uid://b7eb7wyfqm8yh::::res://sprites/balloon-icon.png<>uid://2ico6sytd6vu::::res://ui/joystix monospace.ttf<>uid://d2r4ictmwkb8d::::res://sprites/arrow-icon.png<>uid://e4vyxlp3us1i::::res://sprites/play again.png
-::res://assests/::1695443648
-Arrow.tscn::PackedScene::7348120695876481466::1695443648::0::1::::<><>::uid://b028plvn8m7wk::::res://sprites/bow and arrow.png<>res://scripts/Arrow.gd
-Balloon.tscn::PackedScene::2049342642220279024::1695443648::0::1::::<><>::res://scripts/Balloon.gd<>uid://xbqofqybfigd::::res://sprites/balloon.png
-::res://scripts/::1695443508
+World.tscn::PackedScene::7496924053883458073::1695443831::0::1::::<><>::res://scripts/World.gd<>uid://drljo7aaraf42::::res://sprites/bg.png<>res://scripts/Bow.gd<>uid://b028plvn8m7wk::::res://sprites/bow and arrow.png<>uid://b7eb7wyfqm8yh::::res://sprites/balloon-icon.png<>uid://2ico6sytd6vu::::res://ui/joystix monospace.ttf<>uid://d2r4ictmwkb8d::::res://sprites/arrow-icon.png<>uid://e4vyxlp3us1i::::res://sprites/play again.png
+::res://assests/::1695443832
+Arrow.tscn::PackedScene::7348120695876481466::1695443831::0::1::::<><>::uid://b028plvn8m7wk::::res://sprites/bow and arrow.png<>res://scripts/Arrow.gd
+Balloon.tscn::PackedScene::2049342642220279024::1695443832::0::1::::<><>::res://scripts/Balloon.gd<>uid://xbqofqybfigd::::res://sprites/balloon.png
+::res://audio/::1695444426
+floating-cat-bg.mp3::AudioStreamMP3::3763647659728400151::1695444426::1695444748::1::::<><>::
+::res://scripts/::1695443831
 Arrow.gd::GDScript::-1::1695211614::0::1::::<>Area2D<>::
-Balloon.gd::GDScript::-1::1695443508::0::1::::Balloon<>Area2D<>res://sprites/balloon-icon.png::
+Balloon.gd::GDScript::-1::1695443831::0::1::::Balloon<>Area2D<>res://sprites/balloon-icon.png::
 Bow.gd::GDScript::-1::1695212010::0::1::::<>Node2D<>::
 World.gd::GDScript::-1::1695211383::0::1::::<>Node2D<>::
 ::res://sprites/::1695209762
