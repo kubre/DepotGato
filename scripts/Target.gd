@@ -1,6 +1,6 @@
 @icon("res://sprites/balloon-icon.png")
 
-class_name Balloon
+class_name Target
 
 extends Area2D
 

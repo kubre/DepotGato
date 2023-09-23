@@ -1,17 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://4gymyh7i2gq7"]
+[gd_scene load_steps=8 format=3 uid="uid://cabpalol7tbxf"]
 
-[ext_resource type="Script" path="res://scripts/Balloon.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/Target.gd" id="1_w8pcq"]
 [ext_resource type="Texture2D" uid="uid://xbqofqybfigd" path="res://sprites/balloon.png" id="2"]
 
-[sub_resource type="AtlasTexture" id="1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_65n7l"]
 atlas = ExtResource("2")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yh3di"]
 atlas = ExtResource("2")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_idtdy"]
 atlas = ExtResource("2")
 region = Rect2(32, 0, 32, 32)
 
@@ -19,7 +19,7 @@ region = Rect2(32, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("1")
+"texture": SubResource("AtlasTexture_65n7l")
 }],
 "loop": true,
 "name": &"Burst",
@@ -27,33 +27,34 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("2")
+"texture": SubResource("AtlasTexture_yh3di")
 }, {
 "duration": 1.0,
-"texture": SubResource("3")
+"texture": SubResource("AtlasTexture_idtdy")
 }],
 "loop": true,
 "name": &"Floating",
-"speed": 2.0
+"speed": 4.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="5"]
-radius = 6.0
-height = 14.4073
+radius = 7.0
+height = 22.0
 
-[node name="Balloon" type="Area2D" groups=["Target"]]
+[node name="Target" type="Area2D" groups=["Target"]]
 gravity_point_center = Vector2(0, -20)
 gravity_direction = Vector2(0, -20)
-script = ExtResource("1")
+script = ExtResource("1_w8pcq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.7, 0.7)
+position = Vector2(0, 1)
 sprite_frames = SubResource("4")
-animation = &"Floating"
+animation = &"Burst"
 autoplay = "Floating"
+frame_progress = 0.821431
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
+position = Vector2(1, -2)
 shape = SubResource("5")
 
 [node name="Timer" type="Timer" parent="."]

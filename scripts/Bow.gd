@@ -4,7 +4,7 @@ extends Node2D
 
 class_name Player
 
-const ArrowScn := preload("res://assests/Projectile.tscn")
+const ProjectileScn := preload("res://assests/Projectile.tscn")
 var arrows_left = true
 
 signal arrow_fired
@@ -18,7 +18,7 @@ func _physics_process(_delta: float) -> void:
 	$Cannon.look_at(get_global_mouse_position())
 
 	if Input.is_action_just_released("shoot"):
-		fire(ArrowScn)
+		fire(ProjectileScn)
 
 
 func fire(projectile: PackedScene) -> void:

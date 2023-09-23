@@ -1,25 +1,37 @@
 extends Node2D
 
+@onready var TargetScn := preload("res://assests/Target.tscn")
 
-var Balloon:= preload("res://assests/Balloon.tscn")
-@export var colors := [Color.DARK_GRAY ,Color.AQUA, Color.RED,
-	Color.GREEN_YELLOW, Color.YELLOW,  Color.ANTIQUE_WHITE,
-	Color.VIOLET, Color.DARK_ORANGE, Color.OLIVE]
-var score := 0
 @export var num_arrows := 10
+
+var score := 0
 signal arrows_left(_arrows_left)
+
+var TARGET_TYPES: Array[Target.TargetType] = [
+	Target.TargetType.new(Color("73cd7a"), 30),
+	Target.TargetType.new(Color("fb4631"), 40),
+	Target.TargetType.new(Color("c9a400"), 50),
+	Target.TargetType.new(Color("2f2f2f"), 60),
+	Target.TargetType.new(Color("ffffff"), 70),
+]
+
 
 func _ready() -> void:
 	$HUD/ScoreBoard/ScoreLabel.text = str(score)
 	$HUD/ScoreBoard/ArrowsLabel.text = str(num_arrows)
 
+
 func _on_Timer_timeout() -> void:
 	var spawn_pos = $BalloonSpawner.global_position
 	spawn_pos.x += randf_range(-20, 20)
-	var balloon:= Balloon.instantiate()
-	balloon.global_position = spawn_pos
-	balloon.modulate = colors[randi() % colors.size()]
-	$".".add_child(balloon)
+
+	var target_type = TARGET_TYPES.pick_random()
+
+	var target_balloon = TargetScn.instantiate()
+	target_balloon.set_type(target_type)
+	target_balloon.global_position = spawn_pos
+
+	$".".add_child(target_balloon)
 
 
 func _on_Destroy_area_entered(area: Area2D) -> void:
@@ -34,7 +46,7 @@ func balloon_hit() -> void:
 	$HUD/ScoreBoard/ArrowsLabel.text = str(num_arrows)
 
 
-func arrow_fired()-> void:
+func arrow_fired() -> void:
 	num_arrows -= 1
 	if num_arrows == 0:
 		$LoseTimer.start()
