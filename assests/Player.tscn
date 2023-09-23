@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3iaqn3od4auw"]
+
+[ext_resource type="Script" path="res://scripts/Bow.gd" id="1_g4hr2"]
+[ext_resource type="Texture2D" uid="uid://bhafynlra31fr" path="res://sprites/cannon.png" id="2_46aiy"]
+[ext_resource type="Texture2D" uid="uid://bs8ovo88chvub" path="res://sprites/player_and_balloon.png" id="3_kjl7w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_320ad"]
+atlas = ExtResource("3_kjl7w")
+region = Rect2(0, 0, 73, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_achc6"]
+atlas = ExtResource("3_kjl7w")
+region = Rect2(73, 0, 73, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vowxi"]
+atlas = ExtResource("3_kjl7w")
+region = Rect2(146, 0, 73, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pb3d"]
+atlas = ExtResource("3_kjl7w")
+region = Rect2(219, 0, 73, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qwbvv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_320ad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_achc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vowxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pb3d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_g4hr2")
+
+[node name="Balloon" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qwbvv")
+autoplay = "default"
+frame_progress = 0.432039
+
+[node name="Cannon" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(10, 40)
+scale = Vector2(0.895833, 0.9)
+texture = ExtResource("2_46aiy")
+offset = Vector2(8.73256, -0.688889)

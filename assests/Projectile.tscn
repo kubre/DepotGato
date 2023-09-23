@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://dcxqqejnc1bks"]
+
+[ext_resource type="Script" path="res://scripts/Projectile.gd" id="1_xn2fg"]
+[ext_resource type="Texture2D" uid="uid://b028plvn8m7wk" path="res://sprites/bow and arrow.png" id="2_qnn7b"]
+[ext_resource type="Texture2D" uid="uid://dt033dx7866fy" path="res://sprites/projectile.png" id="3_qtduq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hp5db"]
+atlas = ExtResource("3_qtduq")
+region = Rect2(0, 0, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_koo61"]
+atlas = ExtResource("3_qtduq")
+region = Rect2(6, 0, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74lgs"]
+atlas = ExtResource("3_qtduq")
+region = Rect2(12, 0, 6, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ehrvq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hp5db")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koo61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74lgs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 18.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqd1s"]
+size = Vector2(6, 6)
+
+[node name="Projectile" type="Area2D"]
+linear_damp = 0.0
+script = ExtResource("1_xn2fg")
+speed = 500
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_qnn7b")
+region_enabled = true
+region_rect = Rect2(64, 0, 32, 32)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ehrvq")
+autoplay = "default"
+frame_progress = 0.355645
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tqd1s")
+
+[connection signal="area_entered" from="." to="." method="_on_Arrow_area_entered"]
