@@ -1,8 +1,5 @@
 res://default_env.tres
-res://World.tscn
-res://scripts/Balloon.gd
-res://scripts/Bow.gd
 res://assests/Balloon.tscn
-res://scripts/Arrow.gd
-res://scripts/World.gd
+res://scripts/Balloon.gd
+res://World.tscn
 res://assests/Arrow.tscn
