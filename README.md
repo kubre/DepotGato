@@ -1,5 +1,7 @@
-# BalloonBurst
+# Name on hold
 
-Simple Balloon Bursting game demo made with godot.
-All sprites are created by me and can be reused without any restrictions.
-Font used is from 1001 font site.
+- [x] Ship
+- [] Level progression as series of balloon spawning in different lanes
+- [] Rethink resource management on shooting
+- [] Making multiple levels
+- []

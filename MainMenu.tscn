@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://cdblu76gxgoua"]
+
+[ext_resource type="Texture2D" uid="uid://csl4ifqvsi6cu" path="res://sprites/main-menu.png" id="1_in7xp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbaqe"]
+atlas = ExtResource("1_in7xp")
+region = Rect2(0, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41vfd"]
+atlas = ExtResource("1_in7xp")
+region = Rect2(480, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp3yk"]
+atlas = ExtResource("1_in7xp")
+region = Rect2(960, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y346x"]
+atlas = ExtResource("1_in7xp")
+region = Rect2(1440, 0, 480, 270)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3sjxv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbaqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41vfd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp3yk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y346x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="Menu" type="Node2D"]
+
+[node name="Main-menu" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3sjxv")
+autoplay = "default"
+frame_progress = 0.431941
+centered = false
+
+[node name="MenuContainer" type="VFlowContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 1.0
+offset_right = 145.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Play" type="Button" parent="MenuContainer"]
+layout_mode = 2
+text = "PLAY"
+
+[node name="InfiniteMode" type="Button" parent="MenuContainer"]
+layout_mode = 2
+text = "INFINITE MODE"
+
+[node name="Exit" type="Button" parent="MenuContainer"]
+layout_mode = 2
+text = "EXIT"

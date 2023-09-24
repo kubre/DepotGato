@@ -1,7 +1,6 @@
 extends Node2D
 
 @onready var TargetScn := preload("res://assests/Target.tscn")
-@onready var spawn_pos: Vector2 = $BalloonSpawner.global_position
 @onready var score_label := $HUD/ScoreBoard/ScoreLabel
 @onready var arrow_label := $HUD/ScoreBoard/ArrowsLabel
 @onready var game_over_board := $HUD/GameOverBoard
@@ -20,6 +19,12 @@ var TARGET_TYPES: Array[Target.TargetType] = [
 	Target.TargetType.new(Color("ffffff"), 70),
 ]
 
+enum LANES { FIRST = 285, SECOND = 335, THIRD = 385, FOURTH = 435 }
+
+const BEGINNER_LANE: Array[LANES] = [LANES.THIRD]
+const INTERMEDIATE_LANE: Array[LANES] = [LANES.SECOND, LANES.THIRD]
+const FULL_LANE: Array[LANES] = [LANES.FIRST, LANES.SECOND, LANES.THIRD, LANES.FOURTH]
+
 
 func _ready() -> void:
 	score_label.text = str(score)
@@ -27,17 +32,21 @@ func _ready() -> void:
 
 
 func _on_Timer_timeout() -> void:
-	spawn_pos.x += randf_range(-20, 20)
-
+	spawn_target()
+	
+	
+func spawn_target() -> void:
 	var target_type = TARGET_TYPES.pick_random()
 
 	var target_balloon = TargetScn.instantiate()
 	target_balloon.set_type(target_type)
-	target_balloon.global_position = spawn_pos
+	target_balloon.global_position = Vector2(FULL_LANE.pick_random(), 290)
 
 	$".".add_child(target_balloon)
 
 
+
+	
 func _on_Destroy_area_entered(area: Area2D) -> void:
 	area.queue_free()
 

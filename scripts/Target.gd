@@ -4,7 +4,7 @@ class_name Target
 
 extends Area2D
 
-var speed = 50
+var speed = 10
 
 
 class TargetType:
