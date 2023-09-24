@@ -21,6 +21,7 @@ var target_appeared := 0
 func _ready() -> void:
 	score_label.text = str(score)
 	arrow_label.text = str(num_arrows)
+	$BalloonSpawnTimer.wait_time = level_data.spawn_time
 
 
 func _on_Timer_timeout() -> void:
