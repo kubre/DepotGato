@@ -43,7 +43,7 @@ animations = [{
 [node name="Main-menu" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3sjxv")
 autoplay = "default"
-frame_progress = 0.431941
+frame_progress = 0.593091
 centered = false
 
 [node name="MenuContainer" type="VFlowContainer" parent="."]

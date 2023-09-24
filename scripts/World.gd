@@ -11,19 +11,11 @@ extends Node2D
 var score := 0
 signal arrows_left(_arrows_left)
 
-var TARGET_TYPES: Array[Target.TargetType] = [
-	Target.TargetType.new(Color("73cd7a"), 30),
-	Target.TargetType.new(Color("fb4631"), 40),
-	Target.TargetType.new(Color("c9a400"), 50),
-	Target.TargetType.new(Color("2f2f2f"), 60),
-	Target.TargetType.new(Color("ffffff"), 70),
-]
+const BALLOON_SPAWN_Y = 290
 
-enum LANES { FIRST = 285, SECOND = 335, THIRD = 385, FOURTH = 435 }
+@onready var level_data := LevelsData.levels[4]
 
-const BEGINNER_LANE: Array[LANES] = [LANES.THIRD]
-const INTERMEDIATE_LANE: Array[LANES] = [LANES.SECOND, LANES.THIRD]
-const FULL_LANE: Array[LANES] = [LANES.FIRST, LANES.SECOND, LANES.THIRD, LANES.FOURTH]
+var target_appeared := 0
 
 
 func _ready() -> void:
@@ -33,20 +25,23 @@ func _ready() -> void:
 
 func _on_Timer_timeout() -> void:
 	spawn_target()
-	
-	
+
+
 func spawn_target() -> void:
-	var target_type = TARGET_TYPES.pick_random()
-
 	var target_balloon = TargetScn.instantiate()
-	target_balloon.set_type(target_type)
-	target_balloon.global_position = Vector2(FULL_LANE.pick_random(), 290)
-
+	target_balloon.set_type(level_data.target_types.pick_random())
+	target_balloon.global_position = Vector2(level_data.lanes.pick_random(), BALLOON_SPAWN_Y)
 	$".".add_child(target_balloon)
 
+	target_appeared += 1
+	if target_appeared == level_data.target_count:
+		end_level()
 
 
-	
+func end_level() -> void:
+	$BalloonSpawnTimer.stop()
+
+
 func _on_Destroy_area_entered(area: Area2D) -> void:
 	area.queue_free()
 
