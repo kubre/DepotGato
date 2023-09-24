@@ -1,6 +1,11 @@
 extends Node2D
 
 @onready var TargetScn := preload("res://assests/Target.tscn")
+@onready var spawn_pos: Vector2 = $BalloonSpawner.global_position
+@onready var score_label := $HUD/ScoreBoard/ScoreLabel
+@onready var arrow_label := $HUD/ScoreBoard/ArrowsLabel
+@onready var game_over_board := $HUD/GameOverBoard
+@onready var loser_timer := $LoseTimer
 
 @export var num_arrows := 10
 
@@ -17,12 +22,11 @@ var TARGET_TYPES: Array[Target.TargetType] = [
 
 
 func _ready() -> void:
-	$HUD/ScoreBoard/ScoreLabel.text = str(score)
-	$HUD/ScoreBoard/ArrowsLabel.text = str(num_arrows)
+	score_label.text = str(score)
+	arrow_label.text = str(num_arrows)
 
 
 func _on_Timer_timeout() -> void:
-	var spawn_pos = $BalloonSpawner.global_position
 	spawn_pos.x += randf_range(-20, 20)
 
 	var target_type = TARGET_TYPES.pick_random()
@@ -42,20 +46,20 @@ func balloon_hit() -> void:
 	score += 1
 	num_arrows += 1
 	emit_signal("arrows_left", true)
-	$HUD/ScoreBoard/ScoreLabel.text = str(score)
-	$HUD/ScoreBoard/ArrowsLabel.text = str(num_arrows)
+	score_label.text = str(score)
+	arrow_label.text = str(num_arrows)
 
 
 func arrow_fired() -> void:
 	num_arrows -= 1
 	if num_arrows == 0:
-		$LoseTimer.start()
+		loser_timer.start()
 		emit_signal("arrows_left", false)
-	$HUD/ScoreBoard/ArrowsLabel.text = str(num_arrows)
+	arrow_label.text = str(num_arrows)
 
 
 func _on_LoseTimer_timeout() -> void:
-	$HUD/GameOverBoard.show()
+	game_over_board.show()
 
 
 func _on_PlayAgainButton_pressed() -> void:
