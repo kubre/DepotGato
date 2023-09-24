@@ -17,7 +17,7 @@ config/icon="res://sprites/balloon-icon.png"
 
 [autoload]
 
-LevelsData="*res://scripts/LevelsData.gd"
+GameData="*res://scripts/GameData.gd"
 
 [display]
 

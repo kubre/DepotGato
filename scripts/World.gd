@@ -2,7 +2,6 @@ extends Node2D
 
 @onready var TargetScn := preload("res://assests/Target.tscn")
 @onready var score_label := $HUD/ScoreBoard/ScoreLabel
-@onready var arrow_label := $HUD/ScoreBoard/ArrowsLabel
 @onready var game_over_board := $HUD/GameOverBoard
 @onready var loser_timer := $LoseTimer
 
@@ -13,14 +12,13 @@ signal arrows_left(_arrows_left)
 
 const BALLOON_SPAWN_Y = 290
 
-@onready var level_data := LevelsData.levels[4]
+@onready var level_data := GameData.levels[4]
 
 var target_appeared := 0
 
 
 func _ready() -> void:
 	score_label.text = str(score)
-	arrow_label.text = str(num_arrows)
 	$BalloonSpawnTimer.wait_time = level_data.spawn_time
 
 
@@ -52,15 +50,14 @@ func balloon_hit() -> void:
 	num_arrows += 1
 	emit_signal("arrows_left", true)
 	score_label.text = str(score)
-	arrow_label.text = str(num_arrows)
 
 
-func arrow_fired() -> void:
+# TODO: Game end logic
+func game_end() -> void:
 	num_arrows -= 1
 	if num_arrows == 0:
 		loser_timer.start()
 		emit_signal("arrows_left", false)
-	arrow_label.text = str(num_arrows)
 
 
 func _on_LoseTimer_timeout() -> void:
