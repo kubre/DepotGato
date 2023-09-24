@@ -76,6 +76,7 @@ layout_mode = 2
 text = "EXIT"
 
 [node name="LevelSelection" type="GridContainer" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -89,3 +90,5 @@ columns = 2
 
 [node name="LevelButton" parent="LevelSelection" instance=ExtResource("2_sqlrt")]
 layout_mode = 2
+
+[connection signal="pressed" from="MenuContainer/Play" to="." method="_on_play_pressed"]

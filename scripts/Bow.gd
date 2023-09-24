@@ -11,8 +11,11 @@ signal balloon_hit
 func _physics_process(_delta: float) -> void:
 	$Cannon.look_at(get_global_mouse_position())
 
-	if Input.is_action_just_released("shoot"):
-		fire(ProjectileScn)
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.is_pressed():
+			fire(ProjectileScn)
 
 
 func fire(projectile: PackedScene) -> void:
