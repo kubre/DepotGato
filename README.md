@@ -5,7 +5,7 @@
 - [] Rethink resource management on shooting
     - No limit on shooting just cool down
 - [x] Remove projectile limits
-- [] Top to bottom safety projectile
+- [x] Top to bottom safety projectile
 - [] Main menu logic for starting game and selecting level
 - [] Main Menu UI & Level Selection UI and make menu default
 - [] Game end logic

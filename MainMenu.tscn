@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdblu76gxgoua"]
+[gd_scene load_steps=9 format=3 uid="uid://cdblu76gxgoua"]
 
+[ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_cqehd"]
 [ext_resource type="Texture2D" uid="uid://csl4ifqvsi6cu" path="res://sprites/main-menu.png" id="1_in7xp"]
+[ext_resource type="PackedScene" uid="uid://qhfp8r6qklt" path="res://assests/LevelButton.tscn" id="2_sqlrt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vbaqe"]
 atlas = ExtResource("1_in7xp")
@@ -38,9 +40,10 @@ animations = [{
 "speed": 1.0
 }]
 
-[node name="Menu" type="Node2D"]
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_cqehd")
 
-[node name="Main-menu" type="AnimatedSprite2D" parent="."]
+[node name="MenuBackground" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3sjxv")
 autoplay = "default"
 frame_progress = 0.593091
@@ -71,3 +74,18 @@ text = "INFINITE MODE"
 [node name="Exit" type="Button" parent="MenuContainer"]
 layout_mode = 2
 text = "EXIT"
+
+[node name="LevelSelection" type="GridContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 160.0
+offset_top = 50.0
+offset_right = 290.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="LevelButton" parent="LevelSelection" instance=ExtResource("2_sqlrt")]
+layout_mode = 2
