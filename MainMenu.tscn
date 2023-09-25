@@ -40,8 +40,11 @@ animations = [{
 "speed": 1.0
 }]
 
-[node name="MainMenu" type="Node2D"]
+[node name="MainMenu" type="CanvasLayer" node_paths=PackedStringArray("level_selection", "level_container", "play_button")]
 script = ExtResource("1_cqehd")
+level_selection = NodePath("MarginContainer/Container/LevelContainer/MarginContainer/LevelSelection")
+level_container = NodePath("MarginContainer/Container/LevelContainer")
+play_button = NodePath("MarginContainer/Container/MenuContainer/MarginContainer/MenuContainer/PlayButtn")
 
 [node name="MenuBackground" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3sjxv")
@@ -49,46 +52,74 @@ autoplay = "default"
 frame_progress = 0.593091
 centered = false
 
-[node name="MenuContainer" type="VFlowContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 18.0
-offset_top = 1.0
-offset_right = 145.0
-offset_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-alignment = 1
+theme_override_constants/margin_left = 10
 
-[node name="Play" type="Button" parent="MenuContainer"]
+[node name="Container" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MenuContainer" type="PanelContainer" parent="MarginContainer/Container"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Container/MenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="MenuContainer" type="VBoxContainer" parent="MarginContainer/Container/MenuContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayButtn" type="Button" parent="MarginContainer/Container/MenuContainer/MarginContainer/MenuContainer"]
 layout_mode = 2
 text = "PLAY"
 
-[node name="InfiniteMode" type="Button" parent="MenuContainer"]
+[node name="InfiniteModeButton" type="Button" parent="MarginContainer/Container/MenuContainer/MarginContainer/MenuContainer"]
 layout_mode = 2
 text = "INFINITE MODE"
 
-[node name="Exit" type="Button" parent="MenuContainer"]
+[node name="ExitButton" type="Button" parent="MarginContainer/Container/MenuContainer/MarginContainer/MenuContainer"]
 layout_mode = 2
 text = "EXIT"
 
-[node name="LevelSelection" type="GridContainer" parent="."]
+[node name="LevelContainer" type="PanelContainer" parent="MarginContainer/Container"]
 visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 160.0
-offset_top = 50.0
-offset_right = 290.0
-offset_bottom = 220.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Container/LevelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="LevelSelection" type="GridContainer" parent="MarginContainer/Container/LevelContainer/MarginContainer"]
+layout_mode = 2
 columns = 2
 
-[node name="LevelButton" parent="LevelSelection" instance=ExtResource("2_sqlrt")]
+[node name="LevelButton" parent="MarginContainer/Container/LevelContainer/MarginContainer/LevelSelection" instance=ExtResource("2_sqlrt")]
 layout_mode = 2
 
-[connection signal="pressed" from="MenuContainer/Play" to="." method="_on_play_pressed"]
+[node name="LevelButton4" parent="MarginContainer/Container/LevelContainer/MarginContainer/LevelSelection" instance=ExtResource("2_sqlrt")]
+layout_mode = 2
+
+[node name="LevelButton5" parent="MarginContainer/Container/LevelContainer/MarginContainer/LevelSelection" instance=ExtResource("2_sqlrt")]
+layout_mode = 2
+
+[node name="LevelButton6" parent="MarginContainer/Container/LevelContainer/MarginContainer/LevelSelection" instance=ExtResource("2_sqlrt")]
+layout_mode = 2
+
+[node name="LevelButton2" parent="MarginContainer/Container/LevelContainer/MarginContainer/LevelSelection" instance=ExtResource("2_sqlrt")]
+layout_mode = 2
+
+[node name="LevelButton3" parent="MarginContainer/Container/LevelContainer/MarginContainer/LevelSelection" instance=ExtResource("2_sqlrt")]
+layout_mode = 2

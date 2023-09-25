@@ -1,19 +1,28 @@
-extends Node2D
+class_name MainMenu
+
+extends CanvasLayer
 
 var level_count := GameData.levels.size()
+
 var GameWorldScn = preload("res://GameWorld.tscn")
 const level_button_scn := preload("res://assests/LevelButton.tscn")
 
+@export var level_selection: GridContainer
+@export var level_container: PanelContainer
+@export var play_button: Button
+
 
 func _ready() -> void:
-	for child in $LevelSelection.get_children():
+	for child in level_selection.get_children():
 		child.queue_free()
 
 	for i in range(level_count):
-		var button: LevelButton = level_button_scn.instantiate()
+		var button: Button = level_button_scn.instantiate()
 		button.text = "LEVEL " + str(i + 1)
-		$LevelSelection.add_child(button)
 		button.pressed.connect(load_level.bind(i))
+		level_selection.add_child(button)
+
+	play_button.pressed.connect(_on_play_pressed)
 
 
 func load_level(level_number: int) -> void:
@@ -28,4 +37,5 @@ func load_level(level_number: int) -> void:
 
 
 func _on_play_pressed() -> void:
-	$LevelSelection.show()
+	print(level_container.is_visible_in_tree())
+	level_container.show()
