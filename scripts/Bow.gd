@@ -13,9 +13,10 @@ func _physics_process(_delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.is_pressed():
-			fire(ProjectileScn)
+	var is_firing = event is InputEventMouseButton and event.is_pressed()
+	var is_playing = GameData.game_state == GameData.GAME_STATE.PLAYING
+	if is_firing and is_playing:
+		fire(ProjectileScn)
 
 
 func fire(projectile: PackedScene) -> void:

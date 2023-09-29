@@ -16,7 +16,6 @@ var target_appeared_count := 0
 @onready var game_over_board := $HUD/GameOverBoard
 @onready var loser_timer := $LoseTimer
 
-
 func _ready() -> void:
 	score_label.text = str(score)
 	$BalloonSpawnTimer.wait_time = level_data.spawn_time
@@ -48,17 +47,14 @@ func balloon_hit() -> void:
 
 
 func end_level() -> void:
+	GameData.game_state = GameData.GAME_STATE.FINISHED
 	$BalloonSpawnTimer.stop()
+	game_over_board.show()
 
 
 # Release the balloon if it reaches the top
 func _on_Destroy_area_entered(area: Area2D) -> void:
 	area.queue_free()
-
-
-# TODO: Game end logic
-func game_end() -> void:
-	game_over_board.show()
 
 
 func _on_PlayAgainButton_pressed() -> void:

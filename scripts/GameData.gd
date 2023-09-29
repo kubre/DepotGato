@@ -41,3 +41,8 @@ var levels: Array[LevelMetadata] = [
 	LevelMetadata.new(FULL_LANE, 1.5, 50, TARGET_TYPES),
 	LevelMetadata.new(FULL_LANE, 1, 60, TARGET_TYPES),
 ]
+
+
+enum GAME_STATE { PLAYING, GAME_OVER, FINISHED }
+
+var game_state := GAME_STATE.PLAYING
