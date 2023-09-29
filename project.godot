@@ -27,6 +27,10 @@ window/size/window_width_override=1024
 window/size/window_height_override=786
 window/stretch/mode="viewport"
 
+[gui]
+
+theme/custom="res://default.tres"
+
 [importer_defaults]
 
 texture={

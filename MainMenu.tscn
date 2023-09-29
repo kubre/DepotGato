@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdblu76gxgoua"]
+[gd_scene load_steps=10 format=3 uid="uid://cdblu76gxgoua"]
 
 [ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_cqehd"]
 [ext_resource type="Texture2D" uid="uid://csl4ifqvsi6cu" path="res://sprites/main-menu.png" id="1_in7xp"]
 [ext_resource type="PackedScene" uid="uid://qhfp8r6qklt" path="res://assests/LevelButton.tscn" id="2_sqlrt"]
+[ext_resource type="Theme" uid="uid://btkvtpbxcxmim" path="res://default.tres" id="3_btbty"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vbaqe"]
 atlas = ExtResource("1_in7xp")
@@ -58,6 +59,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_btbty")
 theme_override_constants/margin_left = 10
 
 [node name="Container" type="HBoxContainer" parent="MarginContainer"]
@@ -91,7 +93,6 @@ layout_mode = 2
 text = "EXIT"
 
 [node name="LevelContainer" type="PanelContainer" parent="MarginContainer/Container"]
-visible = false
 layout_mode = 2
 size_flags_vertical = 4
 
