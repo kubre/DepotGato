@@ -93,6 +93,7 @@ layout_mode = 2
 text = "EXIT"
 
 [node name="LevelContainer" type="PanelContainer" parent="MarginContainer/Container"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 4
 

@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=8 format=3 uid="uid://btkvtpbxcxmim"]
 
-[ext_resource type="FontFile" uid="uid://iwd7vacsd4up" path="res://fonts/Kalam-Bold.ttf" id="1_35fok"]
+[ext_resource type="FontFile" uid="uid://bqytixddncf7v" path="res://fonts/OpenDyslexicAlta-Bold.ttf" id="1_w46dw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lovgr"]
 content_margin_left = 8.0
@@ -79,9 +79,9 @@ anti_aliasing_size = 0.5
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gshnq"]
 
 [resource]
-default_font = ExtResource("1_35fok")
-default_font_size = 16
-Button/colors/font_color = Color(1, 1, 0.792157, 1)
+default_font = ExtResource("1_w46dw")
+default_font_size = 14
+Button/colors/font_color = Color(1, 1, 0.929412, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
 Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
