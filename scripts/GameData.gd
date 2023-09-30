@@ -62,4 +62,4 @@ func on_balloon_hit():
 
 	if score == levels[current_level].target_count:
 		game_state = GAME_STATE.WIN
-		emit_signal("end_level")
+		end_level.emit()

@@ -104,5 +104,7 @@ func _on_Destroy_area_entered(area: Area2D) -> void:
 	area.queue_free()
 
 
-func _on_ship_detetction_area_area_entered(area: Area2D) -> void:
-	print("Object detecte", area.name)
+func on_target_reach_ship(area: Area2D) -> void:
+	if area.is_in_group("Target"):
+		GameData.game_state = GameData.GAME_STATE.LOSE
+		GameData.end_level.emit()

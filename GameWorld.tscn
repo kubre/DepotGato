@@ -185,6 +185,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Play Again"
 
+[connection signal="area_entered" from="ShipContainer/ShipDetetctionArea" to="." method="on_target_reach_ship"]
 [connection signal="area_entered" from="DestroyOutsideThis" to="." method="_on_Destroy_area_entered"]
 [connection signal="timeout" from="BalloonSpawnTimer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="LoseTimer" to="." method="_on_LoseTimer_timeout"]
