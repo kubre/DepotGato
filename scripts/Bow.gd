@@ -5,7 +5,6 @@ extends Node2D
 class_name Player
 
 const ProjectileScn := preload("res://assests/Projectile.tscn")
-signal balloon_hit
 
 
 func _physics_process(_delta: float) -> void:
@@ -19,8 +18,7 @@ func _input(event: InputEvent) -> void:
 		fire(ProjectileScn)
 
 
-func fire(projectile: PackedScene) -> void:
-	var arrow: Projectile = projectile.instantiate()
-	get_tree().root.add_child(arrow)
-	arrow.connect("balloon_hit", Callable(get_tree().root.get_node("GameWorld"), "balloon_hit"))
-	arrow.start($Cannon.get_global_transform())
+func fire(projectileScn: PackedScene) -> void:
+	var projectile: Projectile = projectileScn.instantiate()
+	get_tree().root.add_child(projectile)
+	projectile.start($Cannon.get_global_transform())

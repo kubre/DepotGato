@@ -45,7 +45,7 @@ animations = [{
 script = ExtResource("1_cqehd")
 level_selection = NodePath("MarginContainer/Container/LevelContainer/MarginContainer/LevelSelection")
 level_container = NodePath("MarginContainer/Container/LevelContainer")
-play_button = NodePath("MarginContainer/Container/MenuContainer/MarginContainer/MenuContainer/PlayButtn")
+play_button = NodePath("MarginContainer/Container/MenuContainer/MarginContainer/MenuContainer/PlayButton")
 
 [node name="MenuBackground" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3sjxv")
@@ -80,7 +80,7 @@ theme_override_constants/margin_bottom = 10
 [node name="MenuContainer" type="VBoxContainer" parent="MarginContainer/Container/MenuContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="PlayButtn" type="Button" parent="MarginContainer/Container/MenuContainer/MarginContainer/MenuContainer"]
+[node name="PlayButton" type="Button" parent="MarginContainer/Container/MenuContainer/MarginContainer/MenuContainer"]
 layout_mode = 2
 text = "PLAY"
 

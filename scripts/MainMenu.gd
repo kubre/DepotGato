@@ -4,7 +4,6 @@ extends CanvasLayer
 
 var level_count := GameData.levels.size()
 
-var GameWorldScn = preload("res://GameWorld.tscn")
 const level_button_scn := preload("res://assests/LevelButton.tscn")
 
 @export var level_selection: GridContainer
@@ -26,14 +25,8 @@ func _ready() -> void:
 
 
 func load_level(level_number: int) -> void:
-	var game_world: GameWorld = GameWorldScn.instantiate()
-	game_world.set_game_level(level_number)
-
-	var root = get_tree().root
-	var menu := root.get_node("MainMenu")
-	root.remove_child(menu)
-
-	root.add_child(game_world)
+	GameData.current_level = level_number
+	get_tree().change_scene_to_file("res://GameWorld.tscn")
 
 
 func _on_play_pressed() -> void:

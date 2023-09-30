@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://de2tij5n0gsdl"]
+[gd_scene load_steps=18 format=3 uid="uid://de2tij5n0gsdl"]
 
 [ext_resource type="Script" path="res://scripts/GameWorld.gd" id="1_0gmpp"]
 [ext_resource type="Texture2D" uid="uid://5bthdn3vdq2n" path="res://sprites/background.png" id="2_whdnp"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://c3iaqn3od4auw" path="res://assests/Player.tscn" id="5_5rypm"]
 [ext_resource type="Theme" uid="uid://btkvtpbxcxmim" path="res://default.tres" id="6_lsw7k"]
 [ext_resource type="Texture2D" uid="uid://b7eb7wyfqm8yh" path="res://sprites/balloon-icon.png" id="6_ten2m"]
-[ext_resource type="Texture2D" uid="uid://e4vyxlp3us1i" path="res://sprites/play again.png" id="8_yhap8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a4yr5"]
 atlas = ExtResource("3_n1uur")
@@ -131,17 +130,17 @@ one_shot = true
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("6_lsw7k")
 
 [node name="ScoreBoard" type="HBoxContainer" parent="HUD"]
-layout_mode = 0
+layout_mode = 2
 offset_right = 47.0
 offset_bottom = 32.0
 
@@ -157,37 +156,36 @@ texture_filter = 1
 layout_mode = 2
 text = "0"
 
-[node name="GameOverBoard" type="VBoxContainer" parent="HUD"]
+[node name="CenterContainer" type="CenterContainer" parent="HUD"]
+layout_mode = 2
+offset_right = 480.0
+offset_bottom = 270.0
+
+[node name="EndGameContainer" type="VBoxContainer" parent="HUD/CenterContainer"]
+unique_name_in_owner = true
 visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_right = 257.0
-offset_bottom = 143.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="HUD/GameOverBoard"]
+[node name="EndGameBoardLabel" type="Label" parent="HUD/CenterContainer/EndGameContainer"]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
-text = "Game Over"
+text = "Dummy Text which is really long"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="CenterContainer" type="CenterContainer" parent="HUD/GameOverBoard"]
+[node name="CenterContainer" type="CenterContainer" parent="HUD/CenterContainer/EndGameContainer"]
 layout_mode = 2
 
-[node name="PlayAgainButton" type="TextureButton" parent="HUD/GameOverBoard/CenterContainer"]
+[node name="EndGameBoardButton" type="Button" parent="HUD/CenterContainer/EndGameContainer/CenterContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture_normal = ExtResource("8_yhap8")
+text = "Play Again"
 
 [connection signal="area_entered" from="DestroyOutsideThis" to="." method="_on_Destroy_area_entered"]
 [connection signal="timeout" from="BalloonSpawnTimer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="LoseTimer" to="." method="_on_LoseTimer_timeout"]
-[connection signal="pressed" from="HUD/GameOverBoard/CenterContainer/PlayAgainButton" to="." method="_on_PlayAgainButton_pressed"]
+[connection signal="pressed" from="HUD/CenterContainer/EndGameContainer/CenterContainer/EndGameBoardButton" to="." method="_on_end_game_board_button_pressed"]
