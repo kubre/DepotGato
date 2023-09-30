@@ -30,5 +30,4 @@ func load_level(level_number: int) -> void:
 
 
 func _on_play_pressed() -> void:
-	print(level_container.is_visible_in_tree())
 	level_container.show()

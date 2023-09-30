@@ -27,7 +27,11 @@ func _ready() -> void:
 func reset_level_data():
 	GameData.score = 0
 	score_label.text = str(GameData.score)
+
+	GameData.game_state = GameData.GAME_STATE.PLAYING
+
 	$BalloonSpawnTimer.wait_time = level_data.spawn_time
+
 
 func _on_Timer_timeout() -> void:
 	spawn_target()
@@ -52,10 +56,10 @@ func update_score() -> void:
 	score_label.text = str(GameData.score)
 
 
-func end_level(state: GameData.GAME_STATE):
+func end_level():
 	stop_spawing()
 	end_game_container.show()
-	match state:
+	match GameData.game_state:
 		GameData.GAME_STATE.WIN:
 			win_game()
 		GameData.GAME_STATE.LOSE:
@@ -98,3 +102,7 @@ func reload_level() -> void:
 # Release the balloon if it reaches the top
 func _on_Destroy_area_entered(area: Area2D) -> void:
 	area.queue_free()
+
+
+func _on_ship_detetction_area_area_entered(area: Area2D) -> void:
+	print("Object detecte", area.name)

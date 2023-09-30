@@ -93,10 +93,10 @@ position = Vector2(25, 16)
 [node name="Projectile4" parent="ShipContainer" instance=ExtResource("4_8k5u5")]
 position = Vector2(75, 16)
 
-[node name="ShipStaticBody" type="StaticBody2D" parent="ShipContainer"]
+[node name="ShipDetetctionArea" type="Area2D" parent="ShipContainer"]
 position = Vector2(0, -4)
 
-[node name="ShipCollision" type="CollisionShape2D" parent="ShipContainer/ShipStaticBody"]
+[node name="ShipCollision" type="CollisionShape2D" parent="ShipContainer/ShipDetetctionArea"]
 shape = SubResource("RectangleShape2D_w5mhm")
 
 [node name="Player" parent="." instance=ExtResource("5_5rypm")]

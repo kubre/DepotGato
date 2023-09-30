@@ -18,7 +18,7 @@ func _input(event: InputEvent) -> void:
 		fire(ProjectileScn)
 
 
-func fire(projectileScn: PackedScene) -> void:
-	var projectile: Projectile = projectileScn.instantiate()
-	get_tree().root.add_child(projectile)
-	projectile.start($Cannon.get_global_transform())
+func fire(projectile: PackedScene) -> void:
+	var arrow: Projectile = projectile.instantiate()
+	get_tree().root.add_child(arrow)
+	arrow.start($Cannon.get_global_transform())
