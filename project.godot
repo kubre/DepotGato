@@ -15,9 +15,14 @@ run/main_scene="res://MainMenu.tscn"
 config/features=PackedStringArray("4.1")
 config/icon="res://sprites/balloon-icon.png"
 
+[audio]
+
+buses/default_bus_layout=""
+
 [autoload]
 
 GameData="*res://scripts/GameData.gd"
+AudioManager="*res://scripts/AudioManager.gd"
 
 [display]
 

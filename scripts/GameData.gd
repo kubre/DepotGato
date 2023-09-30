@@ -56,7 +56,9 @@ var score := 0
 signal end_level
 signal score_update
 
+
 func on_balloon_hit():
+	AudioManager.play_sound(AudioManager.AUDIO_EFFECTS["BALLOON_POP"])
 	score += 1
 	emit_signal("score_update")
 

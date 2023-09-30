@@ -186,7 +186,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Play Again"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_bw2e4")
 autoplay = true
 
