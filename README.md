@@ -14,15 +14,17 @@
 -   [x] Music & Sound Effects
 -   [x] Game Save and loading back data
 -   [x] Game level data save
--   [ ] Level Progress UI
--   [ ] Infinite level progression save score board
+-   [x] Level Progress UI
+-   [ ] Infinite level, Save max score board
 -   [ ] Rethink resource management on shooting
 -   [ ] Redesign balloon to have cat at bottom and it should go off screen properly
 -   [ ] Rethink lives as target because of abducting ship
 -   [ ] FIX Target removing target BUG
--   [ ] Give this game a name
--   [ ] Web build
+-   [ ] Pause Menu: Pause Game and Main Menu, Reload Level Button
+-   [ ] Give this game a name, Design nice graphics for the name
 -   [ ] Working exit button, About Box and all the credits and licenses
+-   [ ] Make a working web build and deploy using vercel and make a kubre.in subdomain
+-   [ ] Mobile Support
 
 You are trying to save kitten from being abducted by the ship
 

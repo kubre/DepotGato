@@ -96,7 +96,7 @@ func _init() -> void:
 func on_balloon_hit():
 	AudioManager.play_sound(AudioManager.AUDIO_EFFECTS["BALLOON_POP"])
 	score += 1
-	emit_signal("score_update")
+	score_update.emit()
 
 	if score == levels[current_level].target_count:
 		game_state = GAME_STATE.WIN

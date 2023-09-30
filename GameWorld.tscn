@@ -140,29 +140,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("6_lsw7k")
 
-[node name="ScoreBoard" type="HBoxContainer" parent="HUD"]
-layout_mode = 2
-offset_right = 47.0
-offset_bottom = 32.0
-
-[node name="LevelLabel" type="Label" parent="HUD/ScoreBoard"]
-texture_filter = 1
-layout_mode = 2
-text = "Level 1"
-uppercase = true
-
-[node name="BalloonIcon" type="TextureRect" parent="HUD/ScoreBoard"]
-modulate = Color(0.933333, 0.113725, 0.113725, 1)
-texture_filter = 1
-layout_mode = 2
-size_flags_horizontal = 6
-texture = ExtResource("6_ten2m")
-
-[node name="ScoreLabel" type="Label" parent="HUD/ScoreBoard"]
-texture_filter = 1
-layout_mode = 2
-text = "0"
-
 [node name="CenterContainer" type="CenterContainer" parent="HUD"]
 layout_mode = 2
 offset_right = 480.0
@@ -192,6 +169,53 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Play Again"
 
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
+layout_mode = 0
+offset_right = 148.0
+offset_bottom = 25.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="ScoreBoard" type="HBoxContainer" parent="HUD/MarginContainer"]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="HUD/MarginContainer/ScoreBoard"]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+size_flags_vertical = 4
+value = 30.0
+show_percentage = false
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/MarginContainer/ScoreBoard"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="BalloonIcon" type="TextureRect" parent="HUD/MarginContainer/ScoreBoard"]
+modulate = Color(0.933333, 0.113725, 0.113725, 1)
+texture_filter = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("6_ten2m")
+expand_mode = 1
+
+[node name="ScoreLabel" type="Label" parent="HUD/MarginContainer/ScoreBoard"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 1
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="HUD"]
+texture_filter = 1
+layout_mode = 2
+offset_right = 480.0
+offset_bottom = 270.0
+text = "Level 1"
+vertical_alignment = 2
+uppercase = true
+
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_bw2e4")
 autoplay = true
@@ -200,4 +224,4 @@ autoplay = true
 [connection signal="area_entered" from="DestroyOutsideThis" to="." method="_on_Destroy_area_entered"]
 [connection signal="timeout" from="BalloonSpawnTimer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="LoseTimer" to="." method="_on_LoseTimer_timeout"]
-[connection signal="pressed" from="HUD/CenterContainer/EndGameContainer/CenterContainer/EndGameBoardButton" to="." method="_on_end_game_board_button_pressed"]
+[connection signal="pressed" from="HUD/CenterContainer/EndGameContainer/CenterContainer/EndGameBoardButton" to="." method="on_target_reach_ship"]
