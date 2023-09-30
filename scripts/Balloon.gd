@@ -7,16 +7,7 @@ extends Area2D
 var speed = 50
 
 
-class TargetType:
-	var color: Color
-	var speed: int
-
-	func _init(color: Color, speed: int) -> void:
-		self.color = color
-		self.speed = speed
-
-
-func set_type(target_type: TargetType) -> void:
+func set_type(target_type: Target.TargetType) -> void:
 	$AnimatedSprite2D.modulate = target_type.color
 	speed = target_type.speed
 

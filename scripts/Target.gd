@@ -11,9 +11,15 @@ class TargetType:
 	var color: Color
 	var speed: int
 
-	func _init(color: Color, speed: int) -> void:
-		self.color = color
-		self.speed = speed
+	func _init(_color: Color, _speed: int) -> void:
+		self.color = _color
+		self.speed = _speed
+
+	func to_dict() -> Dictionary:
+		return {color = color.to_html(), speed = speed}
+
+	static func from_dict(dict: Dictionary) -> TargetType:
+		return TargetType.new(Color(dict["color"]), dict["speed"])
 
 
 func set_type(target_type: TargetType) -> void:

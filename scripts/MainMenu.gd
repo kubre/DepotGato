@@ -18,6 +18,7 @@ func _ready() -> void:
 	for i in range(level_count):
 		var button: Button = level_button_scn.instantiate()
 		button.text = "LEVEL " + str(i + 1)
+		button.disabled = i > GameData.unlocked_level
 		button.pressed.connect(load_level.bind(i))
 		level_selection.add_child(button)
 

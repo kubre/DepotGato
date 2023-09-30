@@ -145,6 +145,12 @@ layout_mode = 2
 offset_right = 47.0
 offset_bottom = 32.0
 
+[node name="LevelLabel" type="Label" parent="HUD/ScoreBoard"]
+texture_filter = 1
+layout_mode = 2
+text = "Level 1"
+uppercase = true
+
 [node name="BalloonIcon" type="TextureRect" parent="HUD/ScoreBoard"]
 modulate = Color(0.933333, 0.113725, 0.113725, 1)
 texture_filter = 1
