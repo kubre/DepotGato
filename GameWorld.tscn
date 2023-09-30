@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://de2tij5n0gsdl"]
+[gd_scene load_steps=19 format=3 uid="uid://de2tij5n0gsdl"]
 
 [ext_resource type="Script" path="res://scripts/GameWorld.gd" id="1_0gmpp"]
 [ext_resource type="Texture2D" uid="uid://5bthdn3vdq2n" path="res://sprites/background.png" id="2_whdnp"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c3iaqn3od4auw" path="res://assests/Player.tscn" id="5_5rypm"]
 [ext_resource type="Theme" uid="uid://btkvtpbxcxmim" path="res://default.tres" id="6_lsw7k"]
 [ext_resource type="Texture2D" uid="uid://b7eb7wyfqm8yh" path="res://sprites/balloon-icon.png" id="6_ten2m"]
+[ext_resource type="AudioStream" uid="uid://btveyyrfcsidb" path="res://audio/floating-cat-bg.mp3" id="8_bw2e4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a4yr5"]
 atlas = ExtResource("3_n1uur")
@@ -184,6 +185,10 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Play Again"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_bw2e4")
+autoplay = true
 
 [connection signal="area_entered" from="ShipContainer/ShipDetetctionArea" to="." method="on_target_reach_ship"]
 [connection signal="area_entered" from="DestroyOutsideThis" to="." method="_on_Destroy_area_entered"]

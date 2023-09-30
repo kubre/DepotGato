@@ -8,11 +8,11 @@
 -   [x] Top to bottom safety projectile
 -   [x] Main menu logic for starting game and selecting level & make menu default
 -   [x] Main Menu UI & Level Selection UI Theme
--   [] Game end logic
+-   [x] Game end logic
     - Game Ending conditions
-		-  [] All balloons popped = Win
-		-  [] Balloon reached to your ship = Lose
--   [] Game end UI and return main menu
+		-  [x] All balloons popped = Win
+		-  [x] Balloon reached to your ship = Lose
+-   [x] Game end UI and return main menu
 -   [] Music & Sound Effects
 -   [] Game Save and loading back data
 -   [] Game level data save
