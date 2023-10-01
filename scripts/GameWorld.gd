@@ -14,37 +14,60 @@ var level_data: GameData.LevelMetadata
 @onready var TargetScn := preload("res://assests/Target.tscn")
 @onready var MainMenuScn := preload("res://MainMenu.tscn")
 @onready var score_label := $HUD/MarginContainer/ScoreBoard/ScoreLabel
-@onready var level_progress := $HUD/MarginContainer/ScoreBoard/ProgressBar
+@onready var level_progress_bar := $HUD/MarginContainer/ScoreBoard/ProgressBar
 @onready var level_label := $HUD/LevelLabel
 @onready var end_game_container := $"%EndGameContainer"
 @onready var end_game_label := $"%EndGameBoardLabel"
 @onready var end_game_button := $"%EndGameBoardButton"
+@onready var infinite_level_progression_timer := $InfiniteLevelTimer
 
 
 func _ready() -> void:
+	set_game_data()
 	reset_level_data()
 	GameData.score_update.connect(score_update)
 	GameData.end_level.connect(end_level)
 
 
-func reset_level_data():
+func set_game_data() -> void:
 	if GameData.current_level == GameData.INFINITE_LEVEL:
-		# Dummy Infinite level implmentation
-		level_data = GameData.LevelMetadata.new(GameData.FULL_LANE, 1, -1, GameData.TARGET_TYPES)
-		# Timer will be set in the infinite level
-		# Start with Two lanes and then full at first 30 seconds
-		# Balloon types first 30 seconds will be only 1 and 2
-		# Wait time will reduce from 2 seconds to 0.5 seconds
+		# There is no end for infinite level so no need for progress bar
+		level_progress_bar.hide()
+
+		infinite_level_progression_timer.start()
+		progress_infinite_level()
 	else:
 		level_data = GameData.levels[GameData.current_level]
 
+
+func progress_infinite_level() -> void:
+	if (
+		GameData.infinite_level_progreession_tracker
+		== GameData.infinite_progression_levels.size() - 1
+	):
+		infinite_level_progression_timer.stop()
+
+	level_data = GameData.infinite_progression_levels[GameData.infinite_level_progreession_tracker]
+	reset_spawn_rate()
+
+	# Increase the spawn rate for the next level
+	GameData.infinite_level_progreession_tracker += 1
+
+
+func reset_level_data() -> void:
 	GameData.score = 0
 	score_label.text = str(GameData.score)
 	level_label.text = "Level " + str(GameData.current_level + 1)
-	level_progress.value = 0
+	level_progress_bar.value = 0
 
 	GameData.game_state = GameData.GAME_STATE.PLAYING
+	reset_spawn_rate()
 
+	if GameData.current_level == GameData.INFINITE_LEVEL:
+		GameData.infinite_level_progreession_tracker = 0
+
+
+func reset_spawn_rate() -> void:
 	$BalloonSpawnTimer.wait_time = level_data.spawn_time
 
 
@@ -67,22 +90,30 @@ func spawn_target() -> void:
 
 
 func update_level_progressbar() -> void:
-	level_progress.value = (target_appeared_count as float / level_data.target_count as float) * 100
-
-
-func check_for_level_end() -> void:
-	var has_all_targets_spawned := target_appeared_count == level_data.target_count
-	if has_all_targets_spawned:
-		$BalloonSpawnTimer.stop()
+	level_progress_bar.value = (
+		(target_appeared_count as float / level_data.target_count as float) * 100
+	)
 
 
 func score_update() -> void:
 	score_label.text = str(GameData.score)
 
 
+func check_for_level_end() -> void:
+	var has_all_targets_spawned := target_appeared_count == level_data.target_count
+	if has_all_targets_spawned:
+		stop_balloon_spawner()
+
+
+func stop_balloon_spawner() -> void:
+	$BalloonSpawnTimer.stop()
+
+
 func end_level():
 	check_for_level_end()
+	stop_balloon_spawner()
 	end_game_container.show()
+
 	match GameData.game_state:
 		GameData.GAME_STATE.WIN:
 			win_game()
@@ -124,6 +155,6 @@ func _on_Destroy_area_entered(area: Area2D) -> void:
 
 
 func on_target_reach_ship(area: Area2D) -> void:
-	if area.is_in_group("Target"):
+	if area.is_in_group("Target") and GameData.game_state == GameData.GAME_STATE.PLAYING:
 		GameData.game_state = GameData.GAME_STATE.LOSE
 		GameData.end_level.emit()

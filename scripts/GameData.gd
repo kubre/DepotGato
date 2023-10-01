@@ -69,14 +69,33 @@ enum GAME_STATE {
 	LOSE,
 }
 
+# Game state shared across game
 var game_state := GAME_STATE.PLAYING
 
+const INFINITE_LEVEL := -1
+
+# Current level when game is running
 var current_level := 0
+
+# Max level unlocked by player, saved to disk
 var unlocked_level := 0
+
+# Score of current level, reset when level changes
 var score := 0
+
+# Metadata of all unlockable levels, loaded at start of game using _init
 var levels: Array[LevelMetadata]
 
-const INFINITE_LEVEL := -1
+# Infinite mode
+var infinite_progression_levels := [
+	LevelMetadata.new(
+		INTERMEDIATE_LANE, 2, -1, [TARGET_TYPES[0], TARGET_TYPES[1], TARGET_TYPES[2]]
+	),
+	LevelMetadata.new(FULL_LANE, 1.5, -1, TARGET_TYPES),
+	LevelMetadata.new(FULL_LANE, 1, -1, TARGET_TYPES),
+	LevelMetadata.new(FULL_LANE, 0.5, -1, TARGET_TYPES),
+]
+var infinite_level_progreession_tracker := 0
 
 signal end_level
 signal score_update
