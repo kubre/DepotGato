@@ -80,7 +80,7 @@ position = Vector2(360, 18)
 sprite_frames = SubResource("SpriteFrames_at5y3")
 autoplay = "default"
 frame = 2
-frame_progress = 0.975365
+frame_progress = 0.259943
 
 [node name="Projectile" parent="ShipContainer" instance=ExtResource("4_8k5u5")]
 position = Vector2(-75, 16)
