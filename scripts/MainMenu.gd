@@ -32,3 +32,7 @@ func load_level(level_number: int) -> void:
 
 func _on_play_pressed() -> void:
 	level_container.show()
+
+
+func _on_infinite_mode_button_pressed() -> void:
+	load_level(GameData.INFINITE_LEVEL)

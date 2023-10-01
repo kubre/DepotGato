@@ -222,6 +222,6 @@ autoplay = true
 
 [connection signal="area_entered" from="ShipContainer/ShipDetetctionArea" to="." method="on_target_reach_ship"]
 [connection signal="area_entered" from="DestroyOutsideThis" to="." method="_on_Destroy_area_entered"]
-[connection signal="timeout" from="BalloonSpawnTimer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="BalloonSpawnTimer" to="." method="on_balloon_timer_timeout"]
 [connection signal="timeout" from="LoseTimer" to="." method="_on_LoseTimer_timeout"]
 [connection signal="pressed" from="HUD/CenterContainer/EndGameContainer/CenterContainer/EndGameBoardButton" to="." method="on_target_reach_ship"]

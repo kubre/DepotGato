@@ -76,6 +76,8 @@ var unlocked_level := 0
 var score := 0
 var levels: Array[LevelMetadata]
 
+const INFINITE_LEVEL := -1
+
 signal end_level
 signal score_update
 
@@ -94,15 +96,29 @@ func _init() -> void:
 
 
 func on_balloon_hit():
-	AudioManager.play_sound(AudioManager.AUDIO_EFFECTS["BALLOON_POP"])
-	score += 1
-	score_update.emit()
+	play_balloon_hit_sound()
+	update_score()
 
-	if score == levels[current_level].target_count:
+	if current_level != INFINITE_LEVEL:
+		check_for_win()
+
+
+func check_for_win() -> void:
+	var has_won := score == levels[current_level].target_count
+	if has_won:
 		game_state = GAME_STATE.WIN
 		current_level += 1
 		unlocked_level = max(unlocked_level, current_level)
 		end_level.emit()
+
+
+func play_balloon_hit_sound() -> void:
+	AudioManager.play_sound(AudioManager.AUDIO_EFFECTS["BALLOON_POP"])
+
+
+func update_score() -> void:
+	score += 1
+	score_update.emit()
 
 
 const SAVE_FILE_PATH = "user://save-data.json"

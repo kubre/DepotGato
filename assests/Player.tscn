@@ -46,7 +46,8 @@ script = ExtResource("1_g4hr2")
 [node name="Balloon" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qwbvv")
 autoplay = "default"
-frame_progress = 0.655195
+frame = 2
+frame_progress = 0.0324872
 
 [node name="Cannon" type="Sprite2D" parent="."]
 texture_filter = 1

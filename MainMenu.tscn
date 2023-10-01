@@ -125,3 +125,5 @@ layout_mode = 2
 
 [node name="LevelButton3" parent="MarginContainer/Container/LevelContainer/MarginContainer/LevelSelection" instance=ExtResource("2_sqlrt")]
 layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/Container/MenuContainer/MarginContainer/MenuContainer/InfiniteModeButton" to="." method="_on_infinite_mode_button_pressed"]

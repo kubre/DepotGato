@@ -8,6 +8,8 @@ const BALLOON_SPAWN_Y = 290
 # Variables
 var target_appeared_count := 0
 
+var level_data: GameData.LevelMetadata
+
 # Nodes and Scenes
 @onready var TargetScn := preload("res://assests/Target.tscn")
 @onready var MainMenuScn := preload("res://MainMenu.tscn")
@@ -17,7 +19,6 @@ var target_appeared_count := 0
 @onready var end_game_container := $"%EndGameContainer"
 @onready var end_game_label := $"%EndGameBoardLabel"
 @onready var end_game_button := $"%EndGameBoardButton"
-@onready var level_data := GameData.levels[GameData.current_level]
 
 
 func _ready() -> void:
@@ -27,6 +28,16 @@ func _ready() -> void:
 
 
 func reset_level_data():
+	if GameData.current_level == GameData.INFINITE_LEVEL:
+		# Dummy Infinite level implmentation
+		level_data = GameData.LevelMetadata.new(GameData.FULL_LANE, 1, -1, GameData.TARGET_TYPES)
+		# Timer will be set in the infinite level
+		# Start with Two lanes and then full at first 30 seconds
+		# Balloon types first 30 seconds will be only 1 and 2
+		# Wait time will reduce from 2 seconds to 0.5 seconds
+	else:
+		level_data = GameData.levels[GameData.current_level]
+
 	GameData.score = 0
 	score_label.text = str(GameData.score)
 	level_label.text = "Level " + str(GameData.current_level + 1)
@@ -37,8 +48,13 @@ func reset_level_data():
 	$BalloonSpawnTimer.wait_time = level_data.spawn_time
 
 
-func _on_Timer_timeout() -> void:
+func on_balloon_timer_timeout() -> void:
 	spawn_target()
+
+	var is_infinite_level := GameData.current_level == GameData.INFINITE_LEVEL
+	if not is_infinite_level:
+		check_for_level_end()
+		update_level_progressbar()
 
 
 func spawn_target() -> void:
@@ -48,19 +64,16 @@ func spawn_target() -> void:
 	$".".add_child(target_balloon)
 
 	target_appeared_count += 1
-	var has_all_targets_spawned := target_appeared_count == level_data.target_count
-	if has_all_targets_spawned:
-		stop_spawing()
-
-	update_level_progress()
 
 
-func update_level_progress() -> void:
+func update_level_progressbar() -> void:
 	level_progress.value = (target_appeared_count as float / level_data.target_count as float) * 100
 
 
-func stop_spawing() -> void:
-	$BalloonSpawnTimer.stop()
+func check_for_level_end() -> void:
+	var has_all_targets_spawned := target_appeared_count == level_data.target_count
+	if has_all_targets_spawned:
+		$BalloonSpawnTimer.stop()
 
 
 func score_update() -> void:
@@ -68,7 +81,7 @@ func score_update() -> void:
 
 
 func end_level():
-	stop_spawing()
+	check_for_level_end()
 	end_game_container.show()
 	match GameData.game_state:
 		GameData.GAME_STATE.WIN:
