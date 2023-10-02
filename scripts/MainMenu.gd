@@ -11,6 +11,8 @@ const level_button_scn := preload("res://assests/LevelButton.tscn")
 @export var play_button: Button
 @export var max_score_label: Label
 
+@onready var access_dialog: AcceptDialog = $"%AboutDialog"
+
 
 func _ready() -> void:
 	create_level_buttons()
@@ -47,3 +49,11 @@ func _on_play_pressed() -> void:
 
 func _on_infinite_mode_button_pressed() -> void:
 	load_level(GameData.INFINITE_LEVEL)
+
+
+func exit_game() -> void:
+	get_tree().quit()
+
+
+func open_about_dialog() -> void:
+	access_dialog.popup_centered()

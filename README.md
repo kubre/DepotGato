@@ -30,15 +30,3 @@
 -   [ ] Mobile Support
 
 You are trying to save kitten from being abducted by the ship
-
-Credits to add:
-
--   Background music from uppbeat.io:
-
-```
-Music from #Uppbeat (free for Creators!):
-https://uppbeat.io/t/michael-grubb/floating-cat
-License code: EZBAWEV5GRZW24QZ
-```
-
--   Sound Effect from <a href="https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=84862">Pixabay</a>

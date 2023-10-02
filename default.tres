@@ -1,7 +1,17 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://btkvtpbxcxmim"]
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://btkvtpbxcxmim"]
 
 [ext_resource type="Texture2D" uid="uid://b7eb7wyfqm8yh" path="res://sprites/balloon-icon.png" id="1_3jupg"]
 [ext_resource type="FontFile" uid="uid://bqytixddncf7v" path="res://fonts/OpenDyslexicAlta-Bold.ttf" id="1_w46dw"]
+[ext_resource type="FontFile" uid="uid://dp2bodi1dlah8" path="res://fonts/RobotoMono-Bold.ttf" id="2_x431d"]
+[ext_resource type="FontFile" uid="uid://b0qavfbjs7vwg" path="res://fonts/RobotoMono-Regular.ttf" id="3_p0hmi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ekhn"]
+bg_color = Color(0.192157, 0.192157, 0.192157, 1)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lovgr"]
 content_margin_left = 8.0
@@ -158,6 +168,7 @@ anti_aliasing = false
 [resource]
 default_font = ExtResource("1_w46dw")
 default_font_size = 14
+AcceptDialog/styles/panel = SubResource("StyleBoxFlat_8ekhn")
 Button/colors/font_color = Color(1, 1, 0.929412, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
@@ -196,4 +207,6 @@ Label/constants/shadow_offset_y = 1
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_ehu4r")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_68fkk")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_l7wxw")
+RichTextLabel/fonts/bold_font = ExtResource("2_x431d")
+RichTextLabel/fonts/normal_font = ExtResource("3_p0hmi")
 VBoxContainer/constants/separation = 15
