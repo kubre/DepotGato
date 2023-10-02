@@ -71,6 +71,7 @@ size_flags_vertical = 3
 [node name="MenuContainer" type="PanelContainer" parent="MenusMarginContainer/MenusHBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+theme_type_variation = &"FlatPanelContainer"
 
 [node name="MarginContainer" type="MarginContainer" parent="MenusMarginContainer/MenusHBoxContainer/MenuContainer"]
 layout_mode = 2
@@ -81,6 +82,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="MenuContainer" type="VBoxContainer" parent="MenusMarginContainer/MenusHBoxContainer/MenuContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 8
 
 [node name="PlayButton" type="Button" parent="MenusMarginContainer/MenusHBoxContainer/MenuContainer/MarginContainer/MenuContainer"]
 layout_mode = 2
@@ -98,6 +100,7 @@ text = "EXIT"
 visible = false
 layout_mode = 2
 size_flags_vertical = 4
+theme_type_variation = &"FlatPanelContainer"
 
 [node name="MarginContainer" type="MarginContainer" parent="MenusMarginContainer/MenusHBoxContainer/LevelContainer"]
 layout_mode = 2

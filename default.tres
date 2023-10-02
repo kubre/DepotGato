@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://btkvtpbxcxmim"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://btkvtpbxcxmim"]
 
 [ext_resource type="Texture2D" uid="uid://b7eb7wyfqm8yh" path="res://sprites/balloon-icon.png" id="1_3jupg"]
 [ext_resource type="FontFile" uid="uid://bqytixddncf7v" path="res://fonts/OpenDyslexicAlta-Bold.ttf" id="1_w46dw"]
@@ -77,6 +77,8 @@ corner_detail = 20
 anti_aliasing = false
 anti_aliasing_size = 0.5
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_738a8"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aoa4k"]
 bg_color = Color(0.984375, 0.644531, 0.273438, 1)
 border_width_left = 2
@@ -110,7 +112,19 @@ expand_margin_right = 5.0
 expand_margin_bottom = 5.0
 anti_aliasing = false
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gshnq"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehu4r"]
+bg_color = Color(0.984375, 0.644531, 0.273438, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 6
+border_color = Color(0.988281, 0.429688, 0.0820313, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 10
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_68fkk"]
 bg_color = Color(0, 0, 0, 0.560784)
@@ -165,6 +179,8 @@ Button/styles/focus = SubResource("StyleBoxEmpty_3omuc")
 Button/styles/hover = SubResource("StyleBoxFlat_l8bmf")
 Button/styles/normal = SubResource("StyleBoxFlat_g1f1j")
 Button/styles/pressed = SubResource("StyleBoxFlat_mcbym")
+FlatPanelContainer/base_type = &"PanelContainer"
+FlatPanelContainer/styles/panel = SubResource("StyleBoxEmpty_738a8")
 HSlider/icons/grabber = ExtResource("1_3jupg")
 HSlider/icons/grabber_disabled = ExtResource("1_3jupg")
 HSlider/icons/grabber_highlight = ExtResource("1_3jupg")
@@ -175,7 +191,7 @@ Label/colors/font_color = Color(0.956863, 0.976471, 0.992157, 1)
 Label/colors/font_shadow_color = Color(0.137255, 0.32549, 0.435294, 1)
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
-PanelContainer/styles/panel = SubResource("StyleBoxEmpty_gshnq")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_ehu4r")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_68fkk")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_l7wxw")
 VBoxContainer/constants/separation = 15

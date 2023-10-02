@@ -20,11 +20,14 @@ var level_data: GameData.LevelMetadata
 @onready var end_game_label := $"%EndGameBoardLabel"
 @onready var end_game_button := $"%EndGameBoardButton"
 @onready var infinite_level_progression_timer := $InfiniteLevelTimer
+@onready var pause_button := $"%PauseButton"
+@onready var pause_panel_container := $"%PausePanelContainer"
 
 
 func _ready() -> void:
 	set_game_data()
 	reset_level_data()
+	reset_ui()
 	GameData.score_update.connect(score_update)
 	GameData.end_level.connect(end_level)
 
@@ -65,6 +68,11 @@ func reset_level_data() -> void:
 
 	if GameData.current_level == GameData.INFINITE_LEVEL:
 		GameData.infinite_level_progreession_tracker = 0
+
+
+func reset_ui() -> void:
+	pause_button.disabled = false
+	get_tree().paused = false
 
 
 func reset_spawn_rate() -> void:
@@ -113,6 +121,7 @@ func end_level():
 	check_for_level_end()
 	stop_balloon_spawner()
 	end_game_container.show()
+	pause_button.disabled = true
 
 	match GameData.game_state:
 		GameData.GAME_STATE.WIN:
@@ -162,3 +171,18 @@ func on_target_reach_ship(area: Area2D) -> void:
 		if is_playing:
 			GameData.game_state = GameData.GAME_STATE.LOSE
 			GameData.end_level.emit()
+
+
+func pause_game() -> void:
+	get_tree().paused = true
+	pause_panel_container.show()
+
+
+func _on_keep_playing_button_pressed() -> void:
+	get_tree().paused = false
+	pause_panel_container.hide()
+
+
+func _on_main_menu_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_packed(MainMenuScn)

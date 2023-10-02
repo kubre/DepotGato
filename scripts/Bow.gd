@@ -12,6 +12,10 @@ const ProjectileScn := preload("res://assests/Projectile.tscn")
 var has_projectile := true
 
 
+func _ready() -> void:
+	if GameData.current_level == GameData.INFINITE_LEVEL:
+		reload_timer.wait_time = 0.5
+
 func _physics_process(_delta: float) -> void:
 	# queue_redraw()
 	$Cannon.look_at(get_global_mouse_position())

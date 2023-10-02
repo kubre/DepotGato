@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://de2tij5n0gsdl"]
+[gd_scene load_steps=20 format=3 uid="uid://de2tij5n0gsdl"]
 
 [ext_resource type="Script" path="res://scripts/GameWorld.gd" id="1_0gmpp"]
 [ext_resource type="Texture2D" uid="uid://5bthdn3vdq2n" path="res://sprites/background.png" id="2_whdnp"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c3iaqn3od4auw" path="res://assests/Player.tscn" id="5_5rypm"]
 [ext_resource type="Theme" uid="uid://btkvtpbxcxmim" path="res://default.tres" id="6_lsw7k"]
 [ext_resource type="Texture2D" uid="uid://b7eb7wyfqm8yh" path="res://sprites/balloon-icon.png" id="6_ten2m"]
+[ext_resource type="Texture2D" uid="uid://lryuq3u4boco" path="res://sprites/pause.png" id="8_60hay"]
 [ext_resource type="AudioStream" uid="uid://btveyyrfcsidb" path="res://audio/floating-cat-bg.mp3" id="8_bw2e4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a4yr5"]
@@ -131,7 +132,7 @@ one_shot = true
 
 [node name="InfiniteLevelTimer" type="Timer" parent="."]
 editor_description = "Timer for infinite game mode, This helps prgressively increasing level difficulty "
-wait_time = 0.7
+wait_time = 30.0
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3
@@ -149,6 +150,7 @@ theme = ExtResource("6_lsw7k")
 layout_mode = 2
 offset_right = 480.0
 offset_bottom = 270.0
+metadata/_edit_lock_ = true
 
 [node name="EndGameContainer" type="VBoxContainer" parent="HUD/CenterContainer"]
 unique_name_in_owner = true
@@ -174,12 +176,47 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Play Again"
 
+[node name="PausePanelContainer" type="PanelContainer" parent="HUD/CenterContainer"]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/CenterContainer/PausePanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/CenterContainer/PausePanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="PausedLabel" type="Label" parent="HUD/CenterContainer/PausePanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Game Paused"
+horizontal_alignment = 1
+
+[node name="KeepPlayingButton" type="Button" parent="HUD/CenterContainer/PausePanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Keep Playing"
+
+[node name="RetryLevelButton" type="Button" parent="HUD/CenterContainer/PausePanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Retry Level"
+
+[node name="MainMenuButton" type="Button" parent="HUD/CenterContainer/PausePanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
 [node name="MarginContainer" type="MarginContainer" parent="HUD"]
 layout_mode = 0
 offset_right = 148.0
 offset_bottom = 25.0
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
+metadata/_edit_lock_ = true
 
 [node name="ScoreBoard" type="HBoxContainer" parent="HUD/MarginContainer"]
 layout_mode = 2
@@ -212,16 +249,29 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="MarginContainer2" type="MarginContainer" parent="HUD/MarginContainer/ScoreBoard"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="PauseButton" type="Button" parent="HUD/MarginContainer/ScoreBoard"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 4
+icon = ExtResource("8_60hay")
+alignment = 0
+icon_alignment = 1
+vertical_icon_alignment = 0
+
 [node name="LevelLabel" type="Label" parent="HUD"]
 texture_filter = 1
 layout_mode = 2
-offset_left = 1.0
-offset_top = 14.0
-offset_right = 481.0
-offset_bottom = 284.0
+offset_right = 480.0
+offset_bottom = 270.0
 text = "Level 1"
 vertical_alignment = 2
 uppercase = true
+metadata/_edit_lock_ = true
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_bw2e4")
@@ -233,3 +283,7 @@ autoplay = true
 [connection signal="timeout" from="LoseTimer" to="." method="_on_LoseTimer_timeout"]
 [connection signal="timeout" from="InfiniteLevelTimer" to="." method="progress_infinite_level"]
 [connection signal="pressed" from="HUD/CenterContainer/EndGameContainer/CenterContainer/EndGameBoardButton" to="." method="on_target_reach_ship"]
+[connection signal="pressed" from="HUD/CenterContainer/PausePanelContainer/MarginContainer/VBoxContainer/KeepPlayingButton" to="." method="_on_keep_playing_button_pressed"]
+[connection signal="pressed" from="HUD/CenterContainer/PausePanelContainer/MarginContainer/VBoxContainer/RetryLevelButton" to="." method="reload_level"]
+[connection signal="pressed" from="HUD/CenterContainer/PausePanelContainer/MarginContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="HUD/MarginContainer/ScoreBoard/PauseButton" to="." method="pause_game"]
