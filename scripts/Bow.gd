@@ -15,6 +15,8 @@ var has_projectile := true
 func _ready() -> void:
 	if GameData.current_level == GameData.INFINITE_LEVEL:
 		reload_timer.wait_time = 0.5
+	else:
+		reload_timer.wait_time = GameData.levels[GameData.current_level].spawn_time / 2.0
 
 
 func _physics_process(_delta: float) -> void:
