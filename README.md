@@ -24,7 +24,7 @@
 -   [x] FIX Target removing target BUG
 -	[x] Not a bug?~~FIX Only unlock level if player wins the game~~
 -   [x] Pause Menu: Pause Game and Main Menu, Reload Level Button
--   [ ] Give this game a name, Design nice graphics for the name
+-   [x] Give this game a name, Design nice graphics for the name
 -   [ ] Working exit button, About Box and all the credits and licenses
 -   [ ] Make a working web build and deploy using vercel and make a kubre.in subdomain
 -   [ ] Mobile Support
