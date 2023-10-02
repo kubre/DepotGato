@@ -83,16 +83,16 @@ frame = 2
 frame_progress = 0.259943
 
 [node name="Projectile" parent="ShipContainer" instance=ExtResource("4_8k5u5")]
-position = Vector2(-75, 16)
+position = Vector2(-75, 20)
 
 [node name="Projectile2" parent="ShipContainer" instance=ExtResource("4_8k5u5")]
-position = Vector2(-25, 16)
+position = Vector2(-25, 20)
 
 [node name="Projectile3" parent="ShipContainer" instance=ExtResource("4_8k5u5")]
-position = Vector2(25, 16)
+position = Vector2(25, 20)
 
 [node name="Projectile4" parent="ShipContainer" instance=ExtResource("4_8k5u5")]
-position = Vector2(75, 16)
+position = Vector2(75, 20)
 
 [node name="ShipDetetctionArea" type="Area2D" parent="ShipContainer"]
 position = Vector2(0, -4)
@@ -142,6 +142,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme = ExtResource("6_lsw7k")
 
 [node name="CenterContainer" type="CenterContainer" parent="HUD"]
@@ -214,8 +215,10 @@ vertical_alignment = 1
 [node name="LevelLabel" type="Label" parent="HUD"]
 texture_filter = 1
 layout_mode = 2
-offset_right = 480.0
-offset_bottom = 270.0
+offset_left = 1.0
+offset_top = 14.0
+offset_right = 481.0
+offset_bottom = 284.0
 text = "Level 1"
 vertical_alignment = 2
 uppercase = true

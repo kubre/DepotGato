@@ -160,7 +160,6 @@ func load_game() -> void:
 
 	unlocked_level = save_data.get("unlocked_level", 0) as int
 	max_score = save_data.get("max_score", 0) as int
-	print("MAX_SCORE", max_score)
 	var _levels: Array = save_data.get("levels", []) as Array
 
 	levels.clear()
@@ -176,7 +175,6 @@ func save_game():
 	for level in levels:
 		levels_dicts.append(level.to_dict())
 
-	print("MAX_SCORE", max(max_score, score))
 	var save_data := (
 		JSON
 		. stringify(
