@@ -17,7 +17,7 @@
 -   [x] Level Progress UI
 -   [x] Infinite level
 -	[x] Save max score board
--   [ ] Rethink resource management on shooting
+-   [x] Rethink resource management on shooting
 -   [x] Redesign balloon to have cat at bottom ~~and it should go off screen properly~~
 -	[ ] Rethink ship design
 -   [ ] Rethink lives as target because of abducting ship

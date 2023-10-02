@@ -96,7 +96,6 @@ var infinite_progression_levels := [
 	),
 	LevelMetadata.new(FULL_LANE, 1.5, -1, TARGET_TYPES),
 	LevelMetadata.new(FULL_LANE, 1, -1, TARGET_TYPES),
-	LevelMetadata.new(FULL_LANE, 0.5, -1, TARGET_TYPES),
 ]
 var infinite_level_progreession_tracker := 0
 

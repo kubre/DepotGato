@@ -131,7 +131,7 @@ one_shot = true
 
 [node name="InfiniteLevelTimer" type="Timer" parent="."]
 editor_description = "Timer for infinite game mode, This helps prgressively increasing level difficulty "
-wait_time = 30.0
+wait_time = 0.7
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3

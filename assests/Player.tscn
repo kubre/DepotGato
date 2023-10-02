@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3iaqn3od4auw"]
+[gd_scene load_steps=14 format=3 uid="uid://c3iaqn3od4auw"]
 
 [ext_resource type="Script" path="res://scripts/Bow.gd" id="1_g4hr2"]
 [ext_resource type="Texture2D" uid="uid://bhafynlra31fr" path="res://sprites/cannon.png" id="2_46aiy"]
@@ -40,18 +40,68 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_niy5f"]
+atlas = ExtResource("2_46aiy")
+region = Rect2(0, 0, 24, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cka6"]
+atlas = ExtResource("2_46aiy")
+region = Rect2(24, 0, 24, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qh8f0"]
+atlas = ExtResource("2_46aiy")
+region = Rect2(48, 0, 24, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggf63"]
+atlas = ExtResource("2_46aiy")
+region = Rect2(72, 0, 24, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hrfr3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_niy5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cka6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qh8f0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggf63")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
 [node name="Player" type="Node2D"]
 script = ExtResource("1_g4hr2")
 
 [node name="Balloon" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qwbvv")
 autoplay = "default"
-frame = 2
-frame_progress = 0.0324872
 
-[node name="Cannon" type="Sprite2D" parent="."]
+[node name="Cannon" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(10, 40)
 scale = Vector2(0.895833, 0.9)
-texture = ExtResource("2_46aiy")
+sprite_frames = SubResource("SpriteFrames_hrfr3")
+autoplay = "default"
+frame = 3
+frame_progress = 0.772065
 offset = Vector2(8.73256, -0.688889)
+
+[node name="ReloadProgress" type="ProgressBar" parent="."]
+offset_left = -10.1527
+offset_top = 39.6413
+offset_right = 4.8473
+offset_bottom = 44.6413
+value = 100.0
+show_percentage = false
+
+[node name="ReloadTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[connection signal="timeout" from="ReloadTimer" to="." method="reload"]
