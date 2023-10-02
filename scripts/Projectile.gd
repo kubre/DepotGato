@@ -32,5 +32,5 @@ func _on_Arrow_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Target"):
 		area.destroy()
 		emit_signal("balloon_hit")
+		queue_free()
 
-	queue_free()

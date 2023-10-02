@@ -21,7 +21,7 @@
 -   [x] Redesign balloon to have cat at bottom ~~and it should go off screen properly~~
 -	[x] Rethink ship design
 -   [x] Rethink lives as target because of abducting ship
--   [ ] FIX Target removing target BUG
+-   [x] FIX Target removing target BUG
 -	[ ] FIX Only unlock level if player wins the game
 -   [ ] Pause Menu: Pause Game and Main Menu, Reload Level Button
 -   [ ] Give this game a name, Design nice graphics for the name
