@@ -23,6 +23,7 @@ buses/default_bus_layout=""
 
 GameData="*res://scripts/GameData.gd"
 AudioManager="*res://scripts/AudioManager.gd"
+TargetData="*res://scripts/TargetData.gd"
 
 [display]
 

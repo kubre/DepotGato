@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cabpalol7tbxf"]
+[gd_scene load_steps=9 format=3 uid="uid://cabpalol7tbxf"]
 
 [ext_resource type="Script" path="res://scripts/Target.gd" id="1_w8pcq"]
 [ext_resource type="Texture2D" uid="uid://xbqofqybfigd" path="res://sprites/balloon.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cuq0sjmuyjojf" path="res://sprites/spotted-cat.png" id="3_n0q66"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_65n7l"]
 atlas = ExtResource("2")
@@ -58,3 +59,7 @@ shape = SubResource("5")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AbducatedCatSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 22)
+texture = ExtResource("3_n0q66")

@@ -22,6 +22,10 @@ class TargetType:
 		return TargetType.new(Color(dict["color"]), dict["speed"])
 
 
+func _ready() -> void:
+	$AbducatedCatSprite.texture = TargetData.CAT_TYPES.pick_random()
+
+
 func set_type(target_type: TargetType) -> void:
 	$AnimatedSprite2D.modulate = target_type.color
 	speed = target_type.speed

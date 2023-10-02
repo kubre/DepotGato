@@ -116,14 +116,14 @@ func end_level():
 
 	match GameData.game_state:
 		GameData.GAME_STATE.WIN:
-			win_game()
+			set_player_won_game_ui()
 		GameData.GAME_STATE.LOSE:
-			lose_game()
+			set_player_lost_game_ui()
 		_:
 			print("What? Future me, I only gave you two options!")
 
 
-func win_game() -> void:
+func set_player_won_game_ui() -> void:
 	end_game_label.text = "You've protected all of your Comrades!"
 	var levels_count := GameData.levels.size()
 	if GameData.current_level < levels_count - 1:
@@ -135,7 +135,7 @@ func win_game() -> void:
 		end_game_button.pressed.connect(back_to_main_menu)
 
 
-func lose_game() -> void:
+func set_player_lost_game_ui() -> void:
 	end_game_label.text = "You've failed to protect your Comrades!"
 	end_game_button.text = "Play Again?"
 	end_game_button.pressed.connect(reload_level)
@@ -155,6 +155,10 @@ func _on_Destroy_area_entered(area: Area2D) -> void:
 
 
 func on_target_reach_ship(area: Area2D) -> void:
-	if area.is_in_group("Target") and GameData.game_state == GameData.GAME_STATE.PLAYING:
-		GameData.game_state = GameData.GAME_STATE.LOSE
-		GameData.end_level.emit()
+	if area.is_in_group("Target"):
+		area.queue_free()
+		var is_playing := GameData.game_state == GameData.GAME_STATE.PLAYING
+
+		if is_playing:
+			GameData.game_state = GameData.GAME_STATE.LOSE
+			GameData.end_level.emit()

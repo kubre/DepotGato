@@ -18,7 +18,8 @@
 -   [x] Infinite level
 -	[x] Save max score board
 -   [ ] Rethink resource management on shooting
--   [ ] Redesign balloon to have cat at bottom and it should go off screen properly
+-   [x] Redesign balloon to have cat at bottom ~~and it should go off screen properly~~
+-	[ ] Rethink ship design
 -   [ ] Rethink lives as target because of abducting ship
 -   [ ] FIX Target removing target BUG
 -	[ ] FIX Only unlock level if player wins the game
