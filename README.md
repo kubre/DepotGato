@@ -3,11 +3,9 @@
 Simple game where you play as a Gato and save your friend gatos from being abducted.
 
 <br/>
-<a href="https://kubre.itch.io/depot-gato">Depot Gato by Vaibhav Kubre
 
-![image](https://github.com/kubre/DepotGato/assets/20380094/06f8f7d5-4567-4a97-83b1-188d5627e968)
 
-</a><br/>
+![Play Depot Gato on itch.io](https://kubre.itch.io/depot-gato)
 
 
 **Screenshots**
