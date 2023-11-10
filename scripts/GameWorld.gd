@@ -135,7 +135,7 @@ func end_level():
 func set_player_won_game_ui() -> void:
 	end_game_label.text = "You've protected all of your Comrades!"
 	var levels_count := GameData.levels.size()
-	if GameData.current_level < levels_count - 1:
+	if GameData.current_level < levels_count:
 		end_game_button.text = "Next Level"
 		end_game_button.pressed.connect(reload_level)
 	else:
